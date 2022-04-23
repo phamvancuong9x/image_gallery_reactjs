@@ -105,6 +105,11 @@ const ListImage = ({
 };
 const Search = ({ handleSearch }) => {
   const [value, setValue] = useState("");
+  const handleKeyPress = (e) => {
+    if (e.charCode == 13) {
+      handleSearch(value, setValue);
+    }
+  };
   return (
     <Row className="mb-5 mt-4">
       <Col lg="6" className="search-group">
@@ -114,6 +119,7 @@ const Search = ({ handleSearch }) => {
             className="me-2"
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
           <button
             className="icon_search d-flex justify-content-center align-items-center px-3"
